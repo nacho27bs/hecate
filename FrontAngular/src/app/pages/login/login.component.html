@@ -1,0 +1,40 @@
+<!-- src/app/pages/login/login.component.html -->
+<main class="container">
+  <section class="auth-container">
+    <div class="auth-header">
+      <h2 class="section-title">Regreso a la Guarida</h2>
+      <p class="subtitle">Enciende tu lámpara para consultar tus rituales y visiones.</p>
+    </div>
+
+    @if (errorMessage) {
+      <p class="error-msg">{{ errorMessage }}</p>
+    }
+
+    <form class="ritual-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Correo Electrónico</label>
+        <input type="email" formControlName="email" placeholder="lechuza@ejemplo.com">
+        @if (submitted && f['email'].errors?.['required']) {
+          <span class="field-error">El correo es obligatorio</span>
+        }
+        @if (submitted && f['email'].errors?.['email']) {
+          <span class="field-error">Formato de correo inválido</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Tu Clave Secreta</label>
+        <input type="password" formControlName="password">
+        @if (submitted && f['password'].errors?.['required']) {
+          <span class="field-error">La contraseña es obligatoria</span>
+        }
+      </div>
+
+      <button type="submit" class="btn-floral">Entrar al Refugio</button>
+
+      <div class="auth-links-extra">
+        <p class="auth-footer">¿Aún no has firmado el libro? <a routerLink="/register">Inscríbete aquí</a></p>
+      </div>
+    </form>
+  </section>
+</main>
