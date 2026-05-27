@@ -1,0 +1,66 @@
+<!-- src/app/pages/register/register.component.html -->
+<main class="container">
+  <section class="auth-container">
+    <div class="auth-header">
+      <h2 class="section-title">Inscribirse en el Libro</h2>
+      <p class="subtitle">Únete a la hermandad y gestiona tus rituales.</p>
+    </div>
+
+    @if (errorMessage) {
+      <p class="error-msg">{{ errorMessage }}</p>
+    }
+
+    <form class="ritual-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Nombre y Apellidos</label>
+        <input type="text" formControlName="fullName" placeholder="Tu nombre terrenal...">
+        @if (submitted && f['fullName'].errors?.['required']) {
+          <span class="field-error">El nombre es obligatorio</span>
+        }
+        @if (submitted && f['fullName'].errors?.['minlength']) {
+          <span class="field-error">Mínimo 3 caracteres</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Correo Electrónico</label>
+        <input type="email" formControlName="email" placeholder="lechuza@ejemplo.com">
+        @if (submitted && f['email'].errors?.['required']) {
+          <span class="field-error">El correo es obligatorio</span>
+        }
+        @if (submitted && f['email'].errors?.['email']) {
+          <span class="field-error">Formato de correo inválido</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Teléfono de Contacto</label>
+        <input type="tel" formControlName="phone" placeholder="Tu número de contacto...">
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña Secreta</label>
+        <input type="password" formControlName="password">
+        @if (submitted && f['password'].errors?.['minlength']) {
+          <span class="field-error">Mínimo 6 caracteres</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Confirmar Contraseña</label>
+        <input type="password" formControlName="passwordConfirmed">
+        @if (submitted && form.errors?.['mismatch']) {
+          <span class="field-error">Las contraseñas no coinciden</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Retrato de Perfil (URL)</label>
+        <input type="text" formControlName="profilePicture" placeholder="URL de tu imagen...">
+      </div>
+
+      <button type="submit" class="btn-floral">Firmar el Pacto</button>
+      <p class="auth-footer">¿Ya eres parte de nosotros? <a routerLink="/login">Inicia sesión aquí</a></p>
+    </form>
+  </section>
+</main>

@@ -1,0 +1,21 @@
+<!-- src/app/components/navbar/navbar.component.html -->
+<header class="nav-altar">
+  <nav class="container">
+    <ul class="nav-links">
+      <li><a routerLink="/services">El Herbolario</a></li>
+      <li><a routerLink="/" fragment="oraculos">Oráculos</a></li>
+      <li class="logo-central">
+        <a routerLink="/"><h1>La Guarida de Hécate</h1></a>
+      </li>
+      <li><a routerLink="/reservations">Reservar</a></li>
+      <li><a routerLink="/contact">Mensajería</a></li>
+      <li>
+        @if (auth.isLoggedIn()) {
+          <a routerLink="/profile">Mi refugio</a>
+        } @else {
+          <a routerLink="/login">Mi refugio</a>
+        }
+      </li>
+    </ul>
+  </nav>
+</header>

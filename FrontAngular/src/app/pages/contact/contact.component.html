@@ -1,0 +1,29 @@
+<!-- src/app/pages/contact/contact.component.html -->
+<main class="container">
+  <section class="contact-grid">
+    <div class="contact-info">
+      <h2 class="section-title">Correspondencia</h2>
+      <p>Envíanos tus dudas a través del viento o usa este formulario.</p>
+      <ul class="contact-details">
+        <li><strong>Ubicación:</strong> Bajo el gran roble, Calle Mística 12.</li>
+        <li><strong>Horario:</strong> Martes a Domingo, de 18:00 a 00:00.</li>
+        <li><strong>Email:</strong> lechuza&#64;laguaridadehecate.com</li>
+      </ul>
+    </div>
+    <form class="ritual-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Tu nombre</label>
+        <input type="text" formControlName="nombre">
+      </div>
+      <div class="form-group">
+        <label>Tu email</label>
+        <input type="email" formControlName="email">
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea formControlName="mensaje" rows="5"></textarea>
+      </div>
+      <button type="submit" class="btn-floral">Enviar Mensaje</button>
+    </form>
+  </section>
+</main>
